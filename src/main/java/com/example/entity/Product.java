@@ -1,66 +1,32 @@
 package com.example.entity;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "products")
+@Table(name = "product")
 public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(nullable = false, unique = true)
     private String name;
-
-    private String description;
+    private String category;
     private double price;
     private int quantity;
 
     public Product() {}
 
-    public Product(String name, String description, double price, int quantity) {
+    public Product(String name, String category, double price, int quantity) {
         this.name = name;
-        this.description = description;
+        this.category = category;
         this.price = price;
         this.quantity = quantity;
     }
 
-    // Getters and Setters
-
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
+    public int getId() { return id; }
+    public String getName() { return name; }
+    public String getCategory() { return category; }
+    public double getPrice() { return price; }
+    public int getQuantity() { return quantity; }
 }

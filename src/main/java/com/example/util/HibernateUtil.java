@@ -7,16 +7,17 @@ import com.example.entity.Product;
 
 public class HibernateUtil {
 
-    private static final SessionFactory sessionFactory;
+    private static SessionFactory sessionFactory;
 
     static {
         try {
-            Configuration configuration = new Configuration();
-            configuration.configure("hibernate.cfg.xml");
-            configuration.addAnnotatedClass(Product.class);
-            sessionFactory = configuration.buildSessionFactory();
-        } catch (Throwable ex) {
-            throw new ExceptionInInitializerError(ex);
+            Configuration cfg = new Configuration();
+            cfg.configure("hibernate.cfg.xml");
+            cfg.addAnnotatedClass(Product.class);
+
+            sessionFactory = cfg.buildSessionFactory();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
